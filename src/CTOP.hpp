@@ -7,21 +7,28 @@
 #define size 100 // Tamanho do vetor de leitura
 #define ign 10000 // Qtd de caracteres a ignorar
 
-
 namespace ctop {
 
 class CTOP {
 private:
-   Graph 				locations;
-   std::vector< std::vector<int> > 	vehicles;
-   int nVehicles;
-   int					capacity;
-   int         time;
+
+   struct Vehicle{
+      private:
+         const float maxTime;
+      public:
+         float currCapacity;
+         float currTime;
+         Graph rote;
+
+         Vehicle(float maxCapacity, float maxTime) : maxTime(maxTime), currTime(0.0f), currCapacity(maxCapacity){}
+         virtual ~Vehicle(){}
+   };
+
+   Graph 				   locations;
+   std::vector<Vehicle> vehicles;
 
    //! Lista de arestas ordenada pela distância entre os vértices
    std::vector<Graph::Edge>   orderedEdges;
-   //! Rotas de cada veículo
-   std::vector<Graph>         rotes;
 
 public:
    CTOP();
@@ -30,7 +37,7 @@ public:
    enum METHOD {GREED = 0, GRA = 1};
 
    /** \brief Inicializador. Lê arquivo e carrega instância
-   *	 \param file Caminho do arquivo com a instância do problema
+   *	 \param filename Caminho do arquivo com a instância do problema
    *	 \return true se instância criada com sucesso, false c.c.
    */
    bool operator () (const std::string& filename);
@@ -38,15 +45,15 @@ public:
    /** \brief Inicia a busca da solução */
    void start(METHOD m = GREED);
 
-   /** \brief Verificador. Checa a saída do problema, se solução é válida
-   *	 \return true se solução válida, false c.c.
+
+   /** \brief Comparador. Compara se a solução encontrada é melhor que atual
+   *	 \return true se solução é melhor, false c.c.
    */
    bool check();
 
    /** \brief Busca o vertice depósito
    *	 \return CTOPVertexData se encontrou, NULL c.c.
    */
-
    int getDepot();
 
 private:
@@ -86,8 +93,6 @@ private:
 
       virtual bool empty() const;
    };
-
-   //class Automata
 
    static bool compare(const Graph::Edge& e1, const Graph::Edge& e2) {
       float profit1 = (static_cast<CTOPVertexData*>(e1.t.data))->profit;

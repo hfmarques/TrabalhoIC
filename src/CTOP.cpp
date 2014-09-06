@@ -128,8 +128,10 @@ void CTOP::start(METHOD m) {
    }
 }
 
-bool CTOP::check() {
-   return false;
+bool CTOP::check(vector<vehicles>) {
+   /*
+   se o somatório do lucro de todos os caminhões foi maior ou igual a melhor solução mais com um somatório de tempo menor que a melhor solução, solução é melhor.
+   */
 }
 
 void CTOP::ordersEdges() {
