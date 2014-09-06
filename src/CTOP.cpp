@@ -47,7 +47,7 @@ bool CTOP::operator()(const string& filename) {
    file.get(read,size,'\n');
    convert << read;
    convert >> word;
-   int nVehicles = atoi(word.c_str());
+   nVehicles = atoi(word.c_str());
    cout<<atoi(word.c_str())<<endl;
    file.get();
    convert.clear();
@@ -115,7 +115,17 @@ bool CTOP::operator()(const string& filename) {
 }
 
 void CTOP::start(METHOD m) {
+   int depot = getDepot();
 
+   for(unsigned int i = 0; i<nVehicles; i++){
+      vehicles.at(i).push_back(depot);
+   }
+
+   ordersEdges();
+
+   for(unsigned i = 0; i<nVehicles; i++){
+
+   }
 }
 
 bool CTOP::check() {
@@ -124,6 +134,16 @@ bool CTOP::check() {
 
 void CTOP::ordersEdges() {
    sort(orderedEdges.begin(), orderedEdges.end(), compare);
+}
+
+int CTOP::getDepot(){
+   for(int i=0;i < locations.getNumberVertexes();i++){
+      if(locations.getVertexData(i).isDepot()){
+         return i;
+      }
+   }
+
+   return NULL;
 }
 
 /// Classes Internas

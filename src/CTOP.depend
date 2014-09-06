@@ -66,7 +66,7 @@
 	<cmath>
 	"Point.hpp"
 
-1410027683 source:c:\users\héber\copy\documents\github\trabalhoic\src\graph.cpp
+1410032794 source:c:\users\héber\copy\documents\github\trabalhoic\src\graph.cpp
 	<iostream>
 	<sstream>
 	<cstdlib>
@@ -75,12 +75,12 @@
 1410032794 c:\users\héber\copy\documents\github\trabalhoic\src\graph.hpp
 	<vector>
 
-1410027683 source:c:\users\héber\copy\documents\github\trabalhoic\src\main.cpp
+1410035033 source:c:\users\héber\copy\documents\github\trabalhoic\src\main.cpp
 	<iostream>
 	<fstream>
 	"CTOP.hpp"
 
-1410027683 c:\users\héber\copy\documents\github\trabalhoic\src\ctop.hpp
+1410036864 c:\users\héber\copy\documents\github\trabalhoic\src\ctop.hpp
 	"Graph.hpp"
 	"Point.hpp"
 
@@ -91,7 +91,7 @@
 	<cmath>
 	"Point.hpp"
 
-1410028435 source:c:\users\héber\copy\documents\github\trabalhoic\src\ctop.cpp
+1410034970 source:c:\users\héber\copy\documents\github\trabalhoic\src\ctop.cpp
 	<iostream>
 	<algorithm>
 	<fstream>

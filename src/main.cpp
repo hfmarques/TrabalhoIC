@@ -51,6 +51,7 @@ int main(int argc, char* args[]) {
 
    CTOP *cp = new CTOP();
    (*cp)(filename);
+   cp->start();
 
 
    return 0;

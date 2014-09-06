@@ -14,6 +14,7 @@ class CTOP {
 private:
    Graph 				locations;
    std::vector< std::vector<int> > 	vehicles;
+   int nVehicles;
    int					capacity;
    int         time;
 
@@ -42,6 +43,12 @@ public:
    */
    bool check();
 
+   /** \brief Busca o vertice depósito
+   *	 \return CTOPVertexData se encontrou, NULL c.c.
+   */
+
+   int getDepot();
+
 private:
    // Ordena as arestas do Grafo pela distância entre os vértices
    void ordersEdges();
@@ -67,6 +74,7 @@ private:
          out << "{ " << data.coord << ", " << data.demand << ", " << data.timeServ << ", " << data.profit << " }";
          return out;
       }
+
    };
 
    class CTOPEdgeData : public ProblemEdgeData {
