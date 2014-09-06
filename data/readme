@@ -1,0 +1,19 @@
+The files in this directory contain all the 130 large scale instances for the Capacitated Team Orienteering Problem .
+
+For each instance, the following data are reported: 
+	the name of the instance
+	the available fleet size
+	maximum capacity of each vehicle
+	maximum duration of each route
+	the depot's euclidean coordinates
+	the number of the customers
+	
+The remaining lines contain the data of each customer. In particular, for each customer i, the following information are reported:
+X Y D S P
+Where:
+X and Y are the customer's euclidean coordinates 
+D is the customer's demand
+S is the customer's service time
+P is the customer's profit
+
+The duration of each route is equal to the total traveling time to visit all customers in this route, including service time at customers' locations.
