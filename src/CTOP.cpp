@@ -12,7 +12,7 @@ using namespace ctop;
 
 CTOP::CTOP() {
    this->locations = Graph();
-   this->capacity = 0;
+//   this->capacity = 0;
 }
 
 CTOP::~CTOP() {
@@ -47,21 +47,16 @@ bool CTOP::operator()(const string& filename) {
    file.get(read,size,'\n');
    convert << read;
    convert >> word;
-   nVehicles = atoi(word.c_str());
+   int nVehicles = atoi(word.c_str());
    cout<<atoi(word.c_str())<<endl;
    file.get();
    convert.clear();
-
-   for(int i=0; i<nVehicles; i++) {
-      std::vector<int> v = std::vector<int>();
-      vehicles.push_back(v);
-   }
 
    file.ignore(size,' '); // lê a capacidade máxima
    file.get(read,size,'\n');
    convert << read;
    convert >> word;
-   capacity = atoi(word.c_str());
+   int capacity = atoi(word.c_str());
    cout<<capacity<<endl;
    file.get();
    convert.clear();
@@ -70,13 +65,17 @@ bool CTOP::operator()(const string& filename) {
    file.get(read,size,'\n');
    convert << read;
    convert >> word;
-   time = atoi(word.c_str());
+   int time = atoi(word.c_str());
    cout<<time<<endl;
    file.get();
    convert.clear();
 
    file.ignore(ign,'\n');
    file.ignore(size,' ');
+
+   for(int i=0;i<nVehicles;i++){
+      vehicles.push_back(Vehicle(capacity,time));
+   }
 
    CTOPVertexData data;
    Point p;
@@ -117,18 +116,18 @@ bool CTOP::operator()(const string& filename) {
 void CTOP::start(METHOD m) {
    int depot = getDepot();
 
-   for(unsigned int i = 0; i<nVehicles; i++){
-      vehicles.at(i).push_back(depot);
-   }
-
-   ordersEdges();
-
-   for(unsigned i = 0; i<nVehicles; i++){
-
-   }
+//   for(unsigned int i = 0; i<nVehicles; i++){
+//      vehicles.at(i).push_back(depot);
+//   }
+//
+//   ordersEdges();
+//
+//   for(unsigned i = 0; i<nVehicles; i++){
+//
+//   }
 }
 
-bool CTOP::check(vector<vehicles>) {
+bool CTOP::check() {
    /*
    se o somatório do lucro de todos os caminhões foi maior ou igual a melhor solução mais com um somatório de tempo menor que a melhor solução, solução é melhor.
    */
